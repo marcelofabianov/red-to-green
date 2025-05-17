@@ -1,6 +1,6 @@
 # ADR-015: Adoção de REST como Estilo Principal para Comunicação Backend-Frontend com OpenAPI
 
-**Status:** Proposto
+**Status:** Aceito
 
 **Data:** 2025-05-17
 
