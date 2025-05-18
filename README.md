@@ -2,31 +2,28 @@
 
 Bem-vindo ao repositório do projeto RedToGreen! Esta aplicação tem como objetivo ajudar usuários a organizar suas finanças pessoais de forma simples, intuitiva e eficaz.
 
-## Visão Geral do Produto
+## 1. Por Onde Começar?
 
-O RedToGreen é uma ferramenta de controle financeiro pessoal projetada com foco na simplicidade e facilidade de uso. Nossa missão é capacitar os usuários, especialmente aqueles com pouca experiência em gestão financeira, a transformar sua relação com o dinheiro, saindo de um cenário de descontrole ("vermelho") para uma situação de clareza, planejamento e tranquilidade ("verde").
+Para entender o RedToGreen, recomendamos os seguintes pontos de partida na nossa documentação:
 
-Para uma descrição completa da proposta de valor, público-alvo e funcionalidades planejadas (incluindo o MVP), por favor, consulte o documento de Visão Geral do Produto:
+* **Visão Geral do Produto:** Entenda o "quê" e o "porquê" do RedToGreen.
+    * [`_docs/produto/visao_geral_v1.md`](_docs/produto/visao_geral_v1.md)
+* **Guia da Documentação:** Um mapa para navegar por toda a nossa documentação.
+    * [`_docs/README.md`](_docs/README.md)
+* **Princípios Fundamentais:** Conheça a cultura e a filosofia que guiam nosso desenvolvimento.
+    * [`_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md`](_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md)
+* **Glossário de Termos:** Para um entendimento comum dos termos chave do projeto.
+    * [`_docs/GLOSSARIO.md`](_docs/GLOSSARIO.md)
+* **Modelagem do Domínio:** Explore as entidades centrais e seus relacionamentos.
+    * [`_docs/dominio/README.md`](_docs/dominio/README.md)
 
-* **Documento Principal:** [`_docs/produto/visao_geral_v1.md`](_docs/produto/visao_geral_v1.md)
+## 2. Decisões Arquiteturais (ADRs)
 
-## Nossa Cultura de Arquitetura e Desenvolvimento
+Todas as decisões arquiteturais significativas são documentadas utilizando o padrão Architecture Decision Record (ADR). A leitura dos ADRs é essencial para compreender a fundo a estrutura técnica do projeto.
 
-No RedToGreen, pautamos nosso desenvolvimento por uma cultura que valoriza a simplicidade, o pragmatismo, a robustez e a capacidade de evoluir de forma sustentável. Nossos princípios fundamentais estão codificados e servem como guia para todas as nossas decisões técnicas.
+* **Índice Completo de ADRs:** [`_docs/adr/`](_docs/adr/)
 
-Convidamos você a ler nosso manifesto de princípios:
-
-* **Princípios Fundamentais:** [`_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md`](_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md)
-
-## Decisões Arquiteturais (ADRs)
-
-Todas as decisões arquiteturais significativas que moldam o RedToGreen são documentadas utilizando o padrão Architecture Decision Record (ADR). Esses registros fornecem o contexto da decisão, a solução escolhida, as alternativas que foram consideradas e as consequências esperadas.
-
-A leitura dos ADRs é essencial para compreender a fundo a estrutura técnica e as razões por trás das escolhas feitas. Você pode encontrar todos os ADRs no diretório:
-
-* **Índice de ADRs:** [`_docs/adr/`](_docs/adr/)
-
-Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
+**ADRs Chave (Leitura Recomendada):**
 
 * **Tecnologias Core:**
     * [ADR-011: Adoção da Linguagem Go para o Backend](_docs/adr/011-adocao_linguagem_go_para_backend.md)
@@ -47,9 +44,9 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
 
 *(Consulte o diretório `_docs/adr/` para a lista completa e atualizada.)*
 
-## Primeiros Passos para Desenvolvedores
+## 3. Primeiros Passos para Desenvolvedores
 
-### Pré-requisitos
+### 3.1. Pré-requisitos
 
 * Go (versão 1.22 ou superior - *Verificar ADR-011 e ADR-017 para a versão exata*)
 * Docker e Docker Compose (para ambiente de desenvolvimento com PostgreSQL e outros serviços)
@@ -57,7 +54,7 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
     * Instalação: `go install github.com/pressly/goose/v3/cmd/goose@latest`
 * Um editor de código com bom suporte a Go (ex: VS Code com a extensão oficial Go).
 
-### Configuração do Ambiente de Desenvolvimento Local
+### 3.2. Configuração do Ambiente de Desenvolvimento Local
 
 1.  **Clone o Repositório:**
     ```bash
@@ -66,7 +63,7 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
     ```
 
 2.  **Configure as Variáveis de Ambiente:**
-    * Copie o arquivo de exemplo `.env.example` (localizado na raiz do projeto ou em `_docs/exemplos/`) para um arquivo `.env` na raiz do projeto:
+    * Copie o arquivo de exemplo `.env.example` (localizado na raiz do projeto) para um arquivo `.env` na raiz do projeto:
         ```bash
         cp .env.example .env
         ```
@@ -74,7 +71,7 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
     * **Importante:** O arquivo `.env` está (ou deveria estar) no `.gitignore` e não deve ser comitado no repositório.
 
 3.  **Inicie os Serviços de Apoio (ex: Banco de Dados PostgreSQL):**
-    * Assumindo que um arquivo `docker-compose.yml` está configurado na raiz do projeto para gerenciar serviços como o PostgreSQL.
+    * Assumindo que um arquivo `docker-compose.yml` está configurado na raiz do projeto.
         ```bash
         docker compose up -d
         ```
@@ -83,12 +80,12 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
 4.  **Execute as Migrações do Banco de Dados:**
     * As migrações SQL estão localizadas no diretório `./db/migrations/`.
     * Certifique-se de que a string de conexão no seu `.env` (ex: `APP_DATABASE_URL`) está correta.
-    * Execute o comando `goose` para aplicar as migrações:
+    * Execute o comando `goose`:
         ```bash
         # Exemplo de comando (certifique-se que APP_DATABASE_URL está corretamente definida no seu .env):
         goose -dir ./db/migrations postgres "${APP_DATABASE_URL}" up
         ```
-        *(Consulte a documentação do `goose` e o ADR-014 para detalhes sobre a configuração e execução).*
+        *(Consulte a documentação do `goose` e o ADR-014 para detalhes).*
 
 5.  **Instale as Dependências do Projeto Go:**
     ```bash
@@ -97,16 +94,16 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
     ```
 
 6.  **Execute a Aplicação (Backend):**
-    * O ponto de entrada principal da aplicação backend provavelmente estará em um subdiretório de `cmd/` (ex: `cmd/api/main.go` ou `cmd/server/main.go`).
+    * O ponto de entrada principal está em `./cmd/api/main.go`.
     * Para executar:
         ```bash
         go run ./cmd/api/main.go
         ```
-    * A aplicação deverá iniciar e logar que está escutando na porta configurada (padrão 8080, conforme ADR-018).
+    * A aplicação deverá logar que está escutando na porta configurada (padrão 8080, conforme ADR-018).
 
-### Executando Testes
+### 3.3. Executando Testes
 
-* Para rodar todos os testes unitários do projeto:
+* Para rodar todos os testes unitários:
     ```bash
     go test ./...
     ```
@@ -115,4 +112,40 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
     go test -coverprofile=coverage.out ./...
     go tool cover -html=coverage.out
     ```
-* Consulte [ADR-019: Estratégia de Testes Unitários em Go com a Biblioteca Testify](_docs/adr/019-testes_unitarios_go_com_testify.md) para mais detalhes sobre nossa abordagem de testes.
+* Consulte [ADR-019](_docs/adr/019-testes_unitarios_go_com_testify.md) para nossa estratégia de testes.
+
+## 4. Estrutura do Projeto (Visão de Alto Nível)
+
+A estrutura do projeto visa seguir as boas práticas da comunidade Go, promovendo modularidade e clareza.
+
+```bash
+redtogreen/
+├── _docs/                # Documentação geral (ADRs, Visão, Domínio, etc.)
+├── api/                  # Definições/especificações de API (ex: OpenAPI)
+├── cmd/                  # Aplicações executáveis
+│   └── api/              # Ponto de entrada para o servidor da API REST
+├── db/
+│   └── migrations/       # Arquivos de migração SQL (goose)
+├── internal/             # Código privado da aplicação
+│   ├── config/
+│   ├── core/             # Contextos, Domínios...
+│   ├── database/
+│   └── transport/
+│       └── http/
+├── pkg/                  # Bibliotecas reutilizáveis (se houver)
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── go.mod
+├── go.sum
+├── LICENSE
+└── README.md             # Este documento
+```
+
+## 5. Como Contribuir
+
+1.  Leia e compreenda os **Princípios Fundamentais** ([ADR-000](_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md)) e os ADRs relevantes.
+2.  Siga as **Convenções de Código** (a serem definidas).
+3.  Escreva **Testes Unitários** (conforme [ADR-019](_docs/adr/019-testes_unitarios_go_com_testify.md)).
+4.  Proponha **Novos ADRs** para decisões arquiteturais significativas.
+5.  Utilize **Pull Requests** para todas as alterações de código.
