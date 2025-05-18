@@ -144,7 +144,7 @@ redtogreen/
 
 ## 5. Como Contribuir
 
-1.  Leia e compreenda os **Princípios Fundamentais** ([ADR-000](_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md)) e os ADRs relevantes.
+1.  Leia e compreenda o manifesto os **Princípios Fundamentais Cultura de Arquitetura e Desenvolvimento** ([ADR-000](_docs/adr/000-principios_fundamentais_cultura_arquitetura_desenvolvimento.md)) e os ADRs relevantes.
 2.  Siga as **Convenções de Código** (a serem definidas).
 3.  Escreva **Testes Unitários** (conforme [ADR-019](_docs/adr/019-testes_unitarios_go_com_testify.md)).
 4.  Proponha **Novos ADRs** para decisões arquiteturais significativas.
