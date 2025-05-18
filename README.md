@@ -33,6 +33,7 @@ Alguns ADRs chave para iniciar seu entendimento do projeto incluem:
     * [ADR-012: Adoção do PostgreSQL como Banco de Dados Principal](_docs/adr/012-adocao_postgresql_como_banco_dados.md)
 * **Estrutura e Comunicação:**
     * [ADR-010: Adoção de Arquitetura Monolítica Modular](_docs/adr/010-arquitetura_backend_monolitica_modular.md)
+    * [ADR-020: Adoção da Arquitetura Hexagonal (Ports and Adapters) para a Implementação dos Módulos](_docs/adr/020-adocao_arquitetura_hexagonal_nos_modulos.md)
     * [ADR-015: Adoção de REST como Estilo Principal para Comunicação Backend-Frontend](_docs/adr/015-adocao_rest_como_estilo_principal_comunicacao_backend_frontend.md)
     * [ADR-016: Adoção do Roteador `go-chi/chi` para Serviços HTTP](_docs/adr/016-adocao_router_chi_para_servicos_http.md)
 * **Dados e Persistência:**
